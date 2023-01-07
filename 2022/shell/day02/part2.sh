@@ -50,6 +50,8 @@ my_score=0;
 draw_score=3;
 won_score=6;
 
+curr_dir=$(realpath "${BASH_SOURCE:-$0}" | xargs dirname)
+
 while read line; do
   IFS=' ' read -r -a round <<< $line;
   opponent_choice="${round[0]}";
@@ -84,7 +86,7 @@ while read line; do
     echo "I lost; My score now is: $my_score"
   fi
 
-done < input.txt
+done < "$curr_dir/input.txt"
 
 echo "${my_score}";
 
