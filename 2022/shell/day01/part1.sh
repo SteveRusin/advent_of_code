@@ -5,22 +5,22 @@ one_line=$(echo "${divided_with_semicolon}" | tr '\n' ' ')
 
 
 IFS=";" read -ra ELFS <<< "$one_line"
-ELF_NUMBER=0;
-ELF_BIGGEST_CALORIES=0;
-ELF_WITH_BIGGEST_CALORIES_NUMBER=1;
+elf_number=0;
+elf_biggers_calories=0;
+wlf_with_biggest_calories_number=1;
 for ELF in "${ELFS[@]}"; do
-  ELF_NUMBER=$((ELF_NUMBER + 1))
+  elf_number=$((elf_number + 1))
   while IFS=" " read -ra ONE_ELF_CALORIES; do
     ELF_CALORIES=0;
     for CALORIE in "${ONE_ELF_CALORIES[@]}"; do
       ELF_CALORIES=$(($ELF_CALORIES + $CALORIE));
-      echo "${ELF_NUMBER} ${CALORIE}: ${ELF_CALORIES}"
+      echo "${elf_number} ${CALORIE}: ${ELF_CALORIES}"
     done
-      echo "ELF_BIGGEST_CALORIES:${ELF_BIGGEST_CALORIES}; ELF_CALORIES:${ELF_CALORIES}"
-    if [ "$ELF_CALORIES" -gt "$ELF_BIGGEST_CALORIES" ]; then
-      ELF_BIGGEST_CALORIES=$ELF_CALORIES;
-      ELF_WITH_BIGGEST_CALORIES_NUMBER=$ELF_NUMBER;
+      echo "elf_biggers_calories:${elf_biggers_calories}; ELF_CALORIES:${ELF_CALORIES}"
+    if [ "$ELF_CALORIES" -gt "$elf_biggers_calories" ]; then
+      elf_biggers_calories=$ELF_CALORIES;
+      wlf_with_biggest_calories_number=$elf_number;
     fi
   done <<< "$ELF"
 done
-echo "max cal:${ELF_BIGGEST_CALORIES}; elf num: ${ELF_WITH_BIGGEST_CALORIES_NUMBER}"
+echo "max cal:${elf_biggers_calories}; elf num: ${wlf_with_biggest_calories_number}"
